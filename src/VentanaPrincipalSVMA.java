@@ -61,6 +61,7 @@ public class VentanaPrincipalSVMA extends javax.swing.JFrame {
         miten_registrarCompra = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         miten_reporteCompra = new javax.swing.JMenuItem();
+        miten_repProducto = new javax.swing.JMenuItem();
         menu_venta = new javax.swing.JMenu();
         miten_registrarVenta = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
@@ -177,6 +178,17 @@ public class VentanaPrincipalSVMA extends javax.swing.JFrame {
         miten_reporteCompra.setIcon(new javax.swing.ImageIcon("C:\\SVMA\\svma\\graficos\\report_key.png")); // NOI18N
         miten_reporteCompra.setText("Reporte Compra");
         menu_producto.add(miten_reporteCompra);
+
+        miten_repProducto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        miten_repProducto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        miten_repProducto.setIcon(new javax.swing.ImageIcon("C:\\SVMA\\svma\\graficos\\reporte.png")); // NOI18N
+        miten_repProducto.setText("Reporte Producto");
+        miten_repProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miten_repProductoActionPerformed(evt);
+            }
+        });
+        menu_producto.add(miten_repProducto);
 
         jMenuBar1.add(menu_producto);
 
@@ -448,6 +460,10 @@ public class VentanaPrincipalSVMA extends javax.swing.JFrame {
         lookandfeel();
     }//GEN-LAST:event_miten_metalActionPerformed
 
+    private void miten_repProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miten_repProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miten_repProductoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -566,6 +582,7 @@ public class VentanaPrincipalSVMA extends javax.swing.JFrame {
     private javax.swing.JMenuItem miten_registrarProveedor;
     private javax.swing.JMenuItem miten_registrarVenta;
     private javax.swing.JMenuItem miten_registrarVentaACredito;
+    private javax.swing.JMenuItem miten_repProducto;
     private javax.swing.JMenuItem miten_reporteCompra;
     private javax.swing.JMenuItem miten_reporteDeDeudaAProveedor;
     private javax.swing.JMenuItem miten_reporteDeVentaACredito;
