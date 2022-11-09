@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="49f93a45-c6b4-4ff0-9e44-909e84b46efd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM `producto`]]>
+	</queryString>
+	<field name="id_producto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Identificador del producto]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[Nombre del producto]]></fieldDescription>
+	</field>
+	<field name="cod_unidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Unidad producto donde 1 es en kg]]></fieldDescription>
+	</field>
+	<field name="stockActual" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Stock actual del producto, no debe ser menor a cero]]></fieldDescription>
+	</field>
+	<field name="stockMinimo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Stock minimo del producto,debe ser mayor a diez]]></fieldDescription>
+	</field>
+	<field name="precio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Precio del producto]]></fieldDescription>
+	</field>
+	<variable name="id_producto_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{id_producto}]]></variableExpression>
+	</variable>
+	<variable name="id_producto_2" class="java.lang.Integer" resetType="Column" calculation="First">
+		<variableExpression><![CDATA[$F{id_producto}]]></variableExpression>
+	</variable>
+	<variable name="cod_unidad_1" class="java.lang.Integer" resetType="Column" calculation="First">
+		<variableExpression><![CDATA[$F{cod_unidad}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="164" y="0" width="264" height="20" forecolor="#0000CC" uuid="1739c083-db50-4dbd-a35c-b6fe4c881900"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Productos Existentes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="100" y="0" width="43" height="20" uuid="b17c058c-9630-41fd-8195-eccb38b89bec"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre del producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="67" height="20" uuid="ebe98a65-9499-4b9b-b785-c5ea05e14bb2"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Identificador del producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="0" width="64" height="20" uuid="8cbf59ef-b3e9-4c1f-abd8-f3092293411d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Stock actual del producto, no debe ser menor a cero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="176" y="0" width="100" height="20" uuid="25d909d6-95a7-4095-8fcf-b1a6b107a30e"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Unidad producto donde 1 es en kg]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="0" width="87" height="20" uuid="b096ef37-473a-42fa-af24-656d9f619946"/>
+				<text><![CDATA[Codigo de Unidad ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="33" height="20" uuid="307db822-0d94-44d6-b8f0-5585a8f5b99e"/>
+				<text><![CDATA[Precio del producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="0" width="74" height="20" uuid="391ea67c-ec20-4622-9ca9-a22a744515f5"/>
+				<text><![CDATA[Stock minimo del producto,debe ser mayor a diez]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#33CCFF" uuid="92ee0a64-5155-404b-9ce6-4192f8f20934">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="89" y="0" width="100" height="20" uuid="ed4b147e-8c6c-4abc-b6ec-06d01a8ab93c"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="e611c24e-cabe-4caf-83ac-7cd861abd0de"/>
+				<textFieldExpression><![CDATA[$F{id_producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="100" height="20" uuid="15c0f00b-c2e1-4603-adef-ea8383aac91e"/>
+				<textFieldExpression><![CDATA[$F{stockActual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="0" width="100" height="20" uuid="7449d500-5385-4fa9-9526-eb5abc3dd1db"/>
+				<textFieldExpression><![CDATA[$F{cod_unidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="0" width="100" height="20" uuid="76c45ac4-9873-4b9a-80ba-258d200238d0"/>
+				<textFieldExpression><![CDATA[$F{cod_unidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="491" y="0" width="64" height="20" uuid="0b4bf6b8-65ce-45e8-85d5-38572419b2ad"/>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="21" height="20" uuid="8a770c1f-5b4b-4662-b511-e70c80e32100"/>
+				<textFieldExpression><![CDATA[$F{stockMinimo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="HH.mm">
+				<reportElement x="176" y="23" width="100" height="20" uuid="936845ab-a764-44ea-baef-211639277205"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="15" y="23" width="128" height="20" uuid="22cd429f-a852-42f5-b566-663bff107543"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="23" width="80" height="20" uuid="155ab0c4-42e1-4ad9-b060-2167f14c0681"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="471" y="23" width="40" height="20" uuid="1cd18173-0483-4859-bcc7-9be98ac03510"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="291" y="23" width="100" height="20" uuid="23351973-01ef-49d4-8722-a603003d1076"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comercial Esplendi]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

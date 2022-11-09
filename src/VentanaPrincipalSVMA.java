@@ -15,6 +15,17 @@ import py.com.svma.bean.dto.ProductoDTO;
 import py.com.svma.model.jdbc.ProductoDAO;
 import py.com.svma.model.jdbc.ProductoDaoJDBC;
 import java.sql.*;
+import py.com.svma.model.jdbc.Conexion;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+       
 
 
 public class VentanaPrincipalSVMA extends javax.swing.JFrame {
@@ -462,6 +473,26 @@ public class VentanaPrincipalSVMA extends javax.swing.JFrame {
 
     private void miten_repProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miten_repProductoActionPerformed
         // TODO add your handling code here:
+        try{
+            //Declaración de las variables
+            Connection conn = null;  
+            conn =  Conexion.getConnection();
+           JasperReport reporte= null;
+           String path= "C:\\SVMA\\svma\\src\\py\\com\\svma\\reportes\\reporteProductos.jrxml";
+           
+           reporte= JasperCompileManager.compileReport(path);
+           JasperPrint jprint= JasperFillManager.fillReport(reporte, null,conn);
+               
+           JasperViewer view=new JasperViewer(jprint, false);
+           //view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+           view.setVisible(true);
+    }                                                     
+      catch(JRException ex){
+       System.out.println("Excepcion en reporte");
+    }   catch (SQLException ex) {    
+            java.util.logging.Logger.getLogger(VentanaPrincipalSVMA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }    
+        
     }//GEN-LAST:event_miten_repProductoActionPerformed
 
     /**
